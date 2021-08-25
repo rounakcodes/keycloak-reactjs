@@ -9,25 +9,25 @@ import SecretBooks from "./SecretBooks";
 
 const BookBox = () => (
   <>
-    <Menu/>
+    <Menu />
     <Switch>
       <Route exact path="/">
-        <BookList/>
+        <BookList />
       </Route>
-      <Route exact path="/books/new">
-        <BookForm/>
-      </Route>
+      <RolesRoute exact path="/devices/new" roles={["interact-admin"]}>
+        <BookForm />
+      </RolesRoute>
       <Route path="/books/:bookId">
-        <BookDetails/>
+        <BookDetails />
       </Route>
-      <RolesRoute path="/secret" roles={['admin']}>
-        <SecretBooks/>
+      <RolesRoute path="/secret" realmRoles={["stf-admin"]}>
+        <SecretBooks />
       </RolesRoute>
       <Route path="*">
-        <NoMatch/>
+        <NoMatch />
       </Route>
     </Switch>
   </>
-)
+);
 
-export default BookBox
+export default BookBox;
